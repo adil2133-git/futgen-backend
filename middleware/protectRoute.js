@@ -2,10 +2,9 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel")
 require("dotenv").config();
-console.log("name of the developer is adil")
+
 const protectRoutes =  async (req, res, next) => {
     try {
-        console.log("checking the cookies",req.cookies)
         let token =
             req.cookies?.Access_Token ||
             req.headers['x-access-token'] ||
@@ -19,7 +18,6 @@ const protectRoutes =  async (req, res, next) => {
             }
         }
 
-        console.log("checking the token:",token)
 
         if (!token) {
             return res.status(401).json({
